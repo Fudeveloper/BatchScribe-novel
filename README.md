@@ -534,13 +534,6 @@ class QualityAssessment:
 3. 在控制台获取API密钥
 4. 将密钥输入到软件配置中
 
-### 模型选择建议
-
-- **新手推荐**：`gemini-2.0-flash-exp` - 平衡性能与成本
-- **质量优先**：`claude-3-5-sonnet-20241022` - 文学质量最高
-- **速度优先**：`gemini-2.0-flash` - 生成速度最快
-- **逻辑性强**：`gemini-2.0-flash-thinking-exp` - 适合复杂剧情
-
 ## 🤝 贡献指南
 
 我们欢迎社区贡献！在贡献代码之前，请确保：
