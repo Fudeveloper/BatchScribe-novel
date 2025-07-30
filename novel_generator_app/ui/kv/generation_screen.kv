@@ -1,0 +1,103 @@
+<GenerationScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(15)
+        spacing: dp(10)
+        
+        # 顶部操作栏
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+            
+            Button:
+                text: '返回'
+                size_hint_x: None
+                width: dp(80)
+                on_release: root.go_back()
+                
+            Label:
+                text: '小说生成'
+                font_size: sp(20)
+        
+        # 状态信息栏
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(80)
+            
+            BoxLayout:
+                size_hint_y: None
+                height: dp(30)
+                
+                Label:
+                    text: f'状态: {root.status}'
+                    halign: 'left'
+                    text_size: self.size
+                    
+                Label:
+                    text: f'进度: {root.progress}%'
+                    halign: 'right'
+                    text_size: self.size
+            
+            # 进度条
+            ProgressBar:
+                value: root.progress
+                max: 100
+                size_hint_y: None
+                height: dp(20)
+            
+            BoxLayout:
+                size_hint_y: None
+                height: dp(30)
+                
+                Label:
+                    text: f'字数: {root.current_length}/{root.target_length}'
+                    halign: 'left'
+                    text_size: self.size
+                    
+                Label:
+                    text: f'已用时间: {root.elapsed_time} | 估计剩余: {root.estimated_time}'
+                    halign: 'right'
+                    text_size: self.size
+        
+        # 控制按钮
+        BoxLayout:
+            size_hint_y: None
+            height: dp(60)
+            spacing: dp(10)
+            padding: [0, 10, 0, 10]
+            
+            Button:
+                text: '暂停' if not root.is_paused else '继续'
+                disabled: not root.is_generating
+                on_release: root.pause_generation() if not root.is_paused else root.resume_generation()
+                
+            Button:
+                text: '停止'
+                disabled: not root.is_generating
+                background_color: (0.9, 0.3, 0.3, 1) if self.disabled == False else (0.5, 0.5, 0.5, 1)
+                on_release: root.stop_generation()
+        
+        # 内容显示区域
+        BoxLayout:
+            orientation: 'vertical'
+            
+            Label:
+                text: '生成内容预览:'
+                size_hint_y: None
+                height: dp(30)
+                halign: 'left'
+                text_size: self.size
+                
+            ScrollView:
+                do_scroll_x: False
+                
+                TextInput:
+                    id: novel_content
+                    readonly: True
+                    text: ''
+                    background_color: (0.95, 0.95, 0.95, 1)
+                    foreground_color: (0, 0, 0, 1)
+                    font_size: sp(14)
+                    padding: [10, 10] 

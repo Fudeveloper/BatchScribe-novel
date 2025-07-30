@@ -1,0 +1,49 @@
+# Python相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Buildozer相关
+.buildozer/
+bin/
+
+# 输出文件
+novel_output_*/
+novel_generator.log
+novel_generator_ui.log
+
+# 配置文件（可能包含敏感信息）
+novel_generator_config.json
+
+# IDE相关
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 系统相关
+.DS_Store
+Thumbs.db
+
+# 虚拟环境
+venv/
+virtualenv/
+ENV/ 

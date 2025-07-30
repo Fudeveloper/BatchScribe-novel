@@ -1,0 +1,237 @@
+<SettingsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(10)
+        
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            
+            Button:
+                text: '返回'
+                size_hint_x: None
+                width: dp(80)
+                on_release: root.go_back()
+                
+            Label:
+                text: '高级设置'
+                font_size: sp(20)
+        
+        ScrollView:
+            GridLayout:
+                cols: 1
+                spacing: dp(15)
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(10)
+                
+                # 温度滑块
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(70)
+                    
+                    Label:
+                        text: f'温度: {temperature.value:.1f}'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    Slider:
+                        id: temperature
+                        min: 0.1
+                        max: 2.0
+                        value: 0.8
+                        step: 0.1
+                        size_hint_y: None
+                        height: dp(40)
+                
+                # Top-P滑块
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(70)
+                    
+                    Label:
+                        text: f'Top-P: {top_p.value:.1f}'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    Slider:
+                        id: top_p
+                        min: 0.1
+                        max: 1.0
+                        value: 0.9
+                        step: 0.1
+                        size_hint_y: None
+                        height: dp(40)
+                
+                # 最大tokens滑块
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(70)
+                    
+                    Label:
+                        text: f'最大tokens: {int(max_tokens.value)}'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    Slider:
+                        id: max_tokens
+                        min: 1000
+                        max: 8000
+                        value: 4000
+                        step: 500
+                        size_hint_y: None
+                        height: dp(40)
+                
+                # 创造力滑块
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(70)
+                    
+                    Label:
+                        text: f'创造力: {creativity.value:.1f}'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    Slider:
+                        id: creativity
+                        min: 0.1
+                        max: 1.0
+                        value: 0.7
+                        step: 0.1
+                        size_hint_y: None
+                        height: dp(40)
+                
+                # 正式程度滑块
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(70)
+                    
+                    Label:
+                        text: f'正式程度: {formality.value:.1f}'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    Slider:
+                        id: formality
+                        min: 0.1
+                        max: 1.0
+                        value: 0.5
+                        step: 0.1
+                        size_hint_y: None
+                        height: dp(40)
+                
+                # 细节程度滑块
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(70)
+                    
+                    Label:
+                        text: f'细节程度: {detail_level.value:.1f}'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    Slider:
+                        id: detail_level
+                        min: 0.1
+                        max: 1.0
+                        value: 0.6
+                        step: 0.1
+                        size_hint_y: None
+                        height: dp(40)
+                
+                # 写作风格选择
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(150)
+                    
+                    Label:
+                        text: '写作风格:'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                    
+                    GridLayout:
+                        cols: 2
+                        size_hint_y: None
+                        height: dp(120)
+                        
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            
+                            CheckBox:
+                                id: style_balanced
+                                group: 'writing_style'
+                                active: True
+                                
+                            Label:
+                                text: '平衡'
+                                text_size: self.size
+                                halign: 'left'
+                                valign: 'middle'
+                                
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            
+                            CheckBox:
+                                id: style_concise
+                                group: 'writing_style'
+                                
+                            Label:
+                                text: '简洁'
+                                text_size: self.size
+                                halign: 'left'
+                                valign: 'middle'
+                        
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            
+                            CheckBox:
+                                id: style_detailed
+                                group: 'writing_style'
+                                
+                            Label:
+                                text: '详细'
+                                text_size: self.size
+                                halign: 'left'
+                                valign: 'middle'
+                                
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            
+                            CheckBox:
+                                id: style_literary
+                                group: 'writing_style'
+                                
+                            Label:
+                                text: '文学'
+                                text_size: self.size
+                                halign: 'left'
+                                valign: 'middle'
+        
+        Button:
+            text: '保存设置'
+            size_hint_y: None
+            height: dp(50)
+            background_color: (0.3, 0.7, 0.3, 1)
+            on_release: root.save_settings() 

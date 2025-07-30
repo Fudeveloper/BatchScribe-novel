@@ -1,0 +1,86 @@
+<MultiTypePopup>:
+    title: "请选择要批量生成的小说类型"
+    size_hint: 0.9, 0.9
+    auto_dismiss: False # 点击外部不关闭
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(10)
+        spacing: dp(10)
+
+        # 顶部搜索和选择区域
+        BoxLayout:
+            size_hint_y: None
+            height: dp(40)
+            spacing: dp(10)
+
+            Label:
+                text: "搜索类型:"
+                size_hint_x: None
+                width: dp(80)
+
+            TextInput:
+                id: search_input
+                hint_text: "输入关键词搜索"
+                multiline: False
+                on_text: root.filter_types(self.text)
+                size_hint_x: 0.6
+
+            Button:
+                text: "清除"
+                size_hint_x: None
+                width: dp(70)
+                on_release: root.clear_search()
+
+            Label:
+                id: selection_label
+                text: "已选择: 0"
+                size_hint_x: None
+                width: dp(100)
+                halign: 'right'
+
+        # 中间选择/取消按钮区域
+        BoxLayout:
+            size_hint_y: None
+            height: dp(40)
+            spacing: dp(10)
+
+            Button:
+                text: "全选"
+                on_release: root.select_all(True)
+
+            Button:
+                text: "取消全选"
+                on_release: root.select_all(False)
+
+        # 中间类型列表区域
+        ScrollView:
+            size_hint: 1, 1 # 占据剩余空间
+            do_scroll_x: False
+
+            GridLayout:
+                id: grid_layout
+                cols: 2 # 两列显示
+                size_hint_y: None
+                height: self.minimum_height # 高度自适应内容
+                spacing: dp(5)
+                padding: dp(5)
+
+        # 底部确认/取消按钮区域
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(20)
+            padding: [dp(10), dp(5)]
+
+            Button:
+                text: "确定"
+                size_hint_x: 0.5
+                on_release: root.on_ok()
+                background_color: (0.3, 0.7, 0.3, 1)
+
+            Button:
+                text: "取消"
+                size_hint_x: 0.5
+                on_release: root.on_cancel()
+                background_color: (0.8, 0.2, 0.2, 1) 

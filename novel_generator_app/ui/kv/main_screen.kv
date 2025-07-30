@@ -1,0 +1,200 @@
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(10)
+        
+        Label:
+            text: 'AI小说生成器'
+            font_size: sp(30)
+            size_hint_y: None
+            height: dp(100)
+            bold: True
+            color: (0.2, 0.6, 0.8, 1)
+            
+        ScrollView:
+            GridLayout:
+                cols: 1
+                spacing: dp(10)
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(5)
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(80)
+                    
+                    Label:
+                        text: 'API密钥'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    TextInput:
+                        id: api_key
+                        hint_text: '输入您的API密钥'
+                        password: True
+                        multiline: False
+                        size_hint_y: None
+                        height: dp(40)
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(80)
+                    
+                    Label:
+                        text: '模型选择'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    Spinner:
+                        id: model_selection
+                        text: 'gpt-4.5-preview'
+                        values: ['gpt-3.5-turbo', 'gpt-4', 'gpt-4.5-preview']
+                        size_hint_y: None
+                        height: dp(40)
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(80)
+                    
+                    Label:
+                        text: '小说类型'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: dp(40)
+                        spacing: dp(10)
+                        
+                        Spinner:
+                            id: novel_type
+                            text: '选择小说类型'
+                            values: root.novel_types
+                            size_hint_x: 0.7
+                            height: dp(40)
+                            on_parent: if not root.selected_novel_types: self.disabled = False 
+                            disabled: True if root.selected_novel_types else False
+
+                        Button:
+                            id: multi_type_btn
+                            text: "多种类型"
+                            size_hint_x: 0.3
+                            on_release: root.open_multi_type_popup()
+                            on_parent: self.text = "已选 " + str(len(root.selected_novel_types)) + " 种" if root.selected_novel_types else "多种类型"
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(80)
+                    
+                    Label:
+                        text: '目标字数'
+                        halign: 'left'
+                        size_hint_y: None
+                        height: dp(30)
+                        text_size: self.size
+                        
+                    TextInput:
+                        id: target_length
+                        hint_text: '小说目标字数'
+                        text: '20000'
+                        input_filter: 'int'
+                        multiline: False
+                        size_hint_y: None
+                        height: dp(40)
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(80)
+                    
+                    Label:
+                        text: '生成数量'
+                        halign: 'left'
+                        size_hint_x: 0.4
+                        text_size: self.size
+                        
+                    TextInput:
+                        id: num_novels
+                        text: '1'
+                        input_filter: 'int'
+                        multiline: False
+                        size_hint_x: 0.6
+                        height: dp(40)
+                        disabled: True if root.selected_novel_types else False
+                        on_parent: self.text = str(len(root.selected_novel_types)) if root.selected_novel_types else '1'
+                
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(40)
+                    
+                    CheckBox:
+                        id: auto_summary
+                        active: True
+                        size_hint_x: None
+                        width: dp(40)
+                        
+                    Label:
+                        text: '自动摘要'
+                        halign: 'left'
+                        text_size: self.size
+                
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(40)
+                    
+                    CheckBox:
+                        id: create_ending
+                        active: False
+                        size_hint_x: None
+                        width: dp(40)
+                        
+                    Label:
+                        text: '创建结局'
+                        halign: 'left'
+                        text_size: self.size
+                
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(40)
+                padding: [dp(5), dp(0)]
+                spacing: dp(5)
+                
+                Button:
+                    id: advanced_btn
+                    text: "高级设置"
+                    size_hint_x: 0.5
+                    on_release: root.open_advanced_settings()
+                    background_color: 0.2, 0.6, 0.8, 1
+                
+                Button:
+                    id: custom_prompt_btn
+                    text: "自定义提示词"
+                    size_hint_x: 0.5
+                    on_release: root.open_custom_prompt()
+                    background_color: 0.8, 0.2, 0.8, 1
+            
+            Button:
+                text: '开始生成'
+                background_color: (0.3, 0.7, 0.3, 1)
+                on_release: root.start_generation() 

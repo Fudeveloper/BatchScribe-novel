@@ -1,0 +1,16 @@
+{
+    "api_key": "",
+    "model": "gpt-4",
+    "language": "中文",
+    "novel_type": "奇幻冒险",
+    "target_length": 20000,
+    "temperature": 0.8,
+    "top_p": 0.9,
+    "max_tokens": 4000,
+    "autosave_interval": 60,
+    "auto_summary": true,
+    "auto_summary_interval": 10000,
+    "create_ending": true,
+    "generate_cover": false,
+    "generate_music": false
+}
