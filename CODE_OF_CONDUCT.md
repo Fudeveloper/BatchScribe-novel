@@ -54,7 +54,7 @@
 如果您对本行为准则有任何问题或建议，请通过以下方式联系我们：
 
 - 项目维护者：[147227]
-- 邮箱：[your.email@example.com]
+- 邮箱：bisu520@88.com
 - GitHub Issues：[项目Issues页面]
 
 ---
