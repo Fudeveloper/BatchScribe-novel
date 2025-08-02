@@ -15,8 +15,8 @@ try:
     from ..templates.prompts import GENRE_SPECIFIC_PROMPTS, MODEL_DESCRIPTIONS, __version__, __author__
     from ..utils.config import save_config
 except ImportError:
-    from novel_generator.templates.prompts import GENRE_SPECIFIC_PROMPTS, MODEL_DESCRIPTIONS, __version__, __author__
-    from novel_generator.utils.config import save_config
+    from templates.prompts import GENRE_SPECIFIC_PROMPTS, MODEL_DESCRIPTIONS, __version__, __author__
+    from utils.config import save_config
 
 class AdvancedSettingsDialog(tk.Toplevel):
     """高级设置对话框"""

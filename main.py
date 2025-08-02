@@ -160,7 +160,8 @@ def main():
                 warnings.warn("未找到可用的应用图标")
         except Exception as e:
             logger.warning(f"设置应用图标失败: {str(e)}")
-            
+
+        # 创建应用实例
         app = NovelGeneratorApp(root)
         root.protocol("WM_DELETE_WINDOW", app.on_closing)
         logger.info("应用界面已初始化")

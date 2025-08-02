@@ -26,12 +26,12 @@ try:
     from ..templates.prompts import MODEL_DESCRIPTIONS, GENRE_SPECIFIC_PROMPTS, __version__
     from .dialogs import AdvancedSettingsDialog, AboutDialog, WelcomeDialog, MultiTypeDialog
 except ImportError:
-    from novel_generator.core.generator import NovelGenerator
-    from novel_generator.core.model_manager import get_model_list
-    from novel_generator.utils.config import save_config, load_config
-    from novel_generator.utils.common import open_directory
-    from novel_generator.templates.prompts import MODEL_DESCRIPTIONS, GENRE_SPECIFIC_PROMPTS, __version__
-    from novel_generator.ui.dialogs import AdvancedSettingsDialog, AboutDialog, WelcomeDialog, MultiTypeDialog
+    from core.generator import NovelGenerator
+    from core.model_manager import get_model_list
+    from utils.config import save_config, load_config
+    from utils.common import open_directory
+    from templates.prompts import MODEL_DESCRIPTIONS, GENRE_SPECIFIC_PROMPTS, __version__
+    from ui.dialogs import AdvancedSettingsDialog, AboutDialog, WelcomeDialog, MultiTypeDialog
 
 def run_asyncio_event_loop(coro):
     """安全地运行异步协程，处理跨平台问题，特别是Windows
@@ -729,7 +729,7 @@ class NovelGeneratorApp:
             
     def update_novel_types(self):
         """更新小说类型列表"""
-        from novel_generator.templates.prompts import NOVEL_TYPES
+        from templates.prompts import NOVEL_TYPES
         
         # 根据当前语言获取小说类型列表
         language = self.language_var.get()

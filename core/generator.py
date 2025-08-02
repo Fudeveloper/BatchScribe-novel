@@ -30,10 +30,10 @@ try:
     from ..utils.common import get_output_dir, get_timestamp
     from .media_generator import MediaGenerator
 except ImportError:
-    from novel_generator.templates.prompts import PROMPT_TEMPLATES, ENDING_PROMPTS, GENRE_SPECIFIC_PROMPTS, NOVEL_TYPES, __version__
-    from novel_generator.utils.config import save_config, load_config
-    from novel_generator.utils.common import get_output_dir, get_timestamp
-    from novel_generator.core.media_generator import MediaGenerator
+    from templates.prompts import PROMPT_TEMPLATES, ENDING_PROMPTS, GENRE_SPECIFIC_PROMPTS, NOVEL_TYPES, __version__
+    from utils.config import save_config, load_config
+    from utils.common import get_output_dir, get_timestamp
+    from core.media_generator import MediaGenerator
 
 # 设置日志
 logger = logging.getLogger("novel_generator")

@@ -13,7 +13,7 @@ if parent_dir not in sys.path:
 try:
     from ..templates.prompts import MODEL_DESCRIPTIONS, SUPPORTED_MODELS
 except ImportError:
-    from novel_generator.templates.prompts import MODEL_DESCRIPTIONS, SUPPORTED_MODELS
+    from templates.prompts import MODEL_DESCRIPTIONS, SUPPORTED_MODELS
 
 def get_model_list(api_key=None):
     """获取可用模型列表"""

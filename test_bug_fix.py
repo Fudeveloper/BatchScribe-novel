@@ -25,8 +25,8 @@ try:
 except ImportError as e:
     try:
         # 尝试绝对导入
-        from novel_generator.core.generator import NovelGenerator
-        from novel_generator.templates.prompts import PROMPT_TEMPLATES, GENRE_SPECIFIC_PROMPTS, NOVEL_TYPES
+        from core.generator import NovelGenerator
+        from templates.prompts import PROMPT_TEMPLATES, GENRE_SPECIFIC_PROMPTS, NOVEL_TYPES
         logger.info("成功导入模块（绝对路径）")
     except ImportError as e2:
         logger.error(f"导入错误: {e2}")
